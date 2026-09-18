@@ -82,8 +82,6 @@ The repository focuses on building useful software, documenting development work
 
 </a>
 
-<br><br>
-
 <img src="https://img.shields.io/badge/GitHub%20Community-ANSWERED-00C853?style=for-the-badge&logo=github&logoColor=white">
 
 </div>
