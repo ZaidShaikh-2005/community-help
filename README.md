@@ -74,7 +74,7 @@ The repository focuses on building useful software, documenting development work
 
 </a>
 
-&nbsp;&nbsp;
+&nbsp;
 
 <a href="https://github.com/orgs/community/discussions/208038">
 
