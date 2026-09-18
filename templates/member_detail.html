@@ -1,0 +1,674 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Member Details - ASHA Care
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-layout">
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="small-logo">
+                A
+            </div>
+
+            <div>
+
+                <h2>
+                    ASHA Care
+                </h2>
+
+                <span>
+                    Healthcare Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="nav-item"
+            >
+                <span>▣</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="{% url 'add_family' %}"
+                class="nav-item"
+            >
+                <span>+</span>
+                Add Family
+            </a>
+
+
+            <a
+                href="{% url 'family_list' %}"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Family List
+            </a>
+
+
+            <a
+                href="{% url 'add_member' %}"
+                class="nav-item"
+            >
+                <span>+</span>
+                Add Member
+            </a>
+
+
+            <a
+                href="{% url 'member_list' %}"
+                class="nav-item active"
+            >
+                <span>♙</span>
+                Member List
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="{% url 'logout' %}"
+                class="nav-item logout"
+            >
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+
+            <div>
+
+                <a
+                    href="{% url 'member_list' %}"
+                    class="back-link"
+                >
+                    ← Back to Member List
+                </a>
+
+
+                <h1>
+                    Member Details
+                </h1>
+
+
+                <p>
+                    View and manage member information.
+                </p>
+
+            </div>
+
+
+            {% if not edit_mode %}
+
+                <a
+                    href="{% url 'edit_member' member.id %}"
+                    class="primary-btn"
+                >
+                    Edit Member
+                </a>
+
+            {% endif %}
+
+
+        </header>
+
+
+
+        <section class="detail-section">
+
+
+            {% if edit_mode %}
+
+
+            <!-- EDIT FORM -->
+
+            <div class="form-card">
+
+
+                <div class="form-card-header">
+
+                    <div>
+
+                        <h2>
+                            Edit Member
+                        </h2>
+
+                        <p>
+                            Update member information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="name"
+                                value="{{ member.name }}"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Age
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                name="age"
+                                value="{{ member.age }}"
+                                min="0"
+                                max="150"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Gender
+                                <span>*</span>
+                            </label>
+
+
+                            <select
+                                name="gender"
+                                required
+                            >
+
+                                <option
+                                    value="Male"
+                                    {% if member.gender == "Male" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Male
+                                </option>
+
+
+                                <option
+                                    value="Female"
+                                    {% if member.gender == "Female" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Female
+                                </option>
+
+
+                                <option
+                                    value="Other"
+                                    {% if member.gender == "Other" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Relation
+                                <span>*</span>
+                            </label>
+
+
+                            <select
+                                name="relation"
+                                required
+                            >
+
+                                <option
+                                    value="Father"
+                                    {% if member.relation == "Father" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Father
+                                </option>
+
+
+                                <option
+                                    value="Mother"
+                                    {% if member.relation == "Mother" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Mother
+                                </option>
+
+
+                                <option
+                                    value="Son"
+                                    {% if member.relation == "Son" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Son
+                                </option>
+
+
+                                <option
+                                    value="Daughter"
+                                    {% if member.relation == "Daughter" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Daughter
+                                </option>
+
+
+                                <option
+                                    value="Brother"
+                                    {% if member.relation == "Brother" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Brother
+                                </option>
+
+
+                                <option
+                                    value="Sister"
+                                    {% if member.relation == "Sister" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Sister
+                                </option>
+
+
+                                <option
+                                    value="Husband"
+                                    {% if member.relation == "Husband" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Husband
+                                </option>
+
+
+                                <option
+                                    value="Wife"
+                                    {% if member.relation == "Wife" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Wife
+                                </option>
+
+
+                                <option
+                                    value="Grandfather"
+                                    {% if member.relation == "Grandfather" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Grandfather
+                                </option>
+
+
+                                <option
+                                    value="Grandmother"
+                                    {% if member.relation == "Grandmother" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Grandmother
+                                </option>
+
+
+                                <option
+                                    value="Other"
+                                    {% if member.relation == "Other" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+                        <a
+                            href="{% url 'member_detail' member.id %}"
+                            class="secondary-btn"
+                        >
+                            Cancel
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Save Changes
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+            {% else %}
+
+
+            <!-- MEMBER DETAILS -->
+
+            <div class="detail-card">
+
+
+                <div class="detail-card-title">
+
+
+                    <div class="member-avatar">
+
+                        {{ member.name|first|upper }}
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="detail-label">
+
+                            Member ID:
+                            M{{ member.id|stringformat:"03d" }}
+
+                        </span>
+
+
+                        <h2>
+                            {{ member.name }}
+                        </h2>
+
+
+                        <span class="status-badge">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="detail-grid">
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong>
+                            {{ member.name }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <strong>
+                            {{ member.age }} Years
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Gender
+                        </span>
+
+                        <strong>
+                            {{ member.gender }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Relation
+                        </span>
+
+                        <strong>
+                            {{ member.relation }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Family
+                        </span>
+
+                        <strong>
+                            {{ member.family.family_name }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Family ID
+                        </span>
+
+                        <strong>
+                            F{{ member.family.id|stringformat:"03d" }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Added On
+                        </span>
+
+                        <strong>
+                            {{ member.created_at|date:"d M Y" }}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAMILY INFORMATION -->
+
+            <div class="table-card">
+
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h2>
+                            Family Information
+                        </h2>
+
+                        <p>
+                            Family associated with this member.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="{% url 'family_detail' member.family.id %}"
+                        class="secondary-btn"
+                    >
+                        View Family
+                    </a>
+
+                </div>
+
+
+
+                <div class="family-summary">
+
+
+                    <div class="family-summary-avatar">
+
+                        {{ member.family.family_name|first|upper }}
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            {{ member.family.family_name }}
+                        </strong>
+
+                        <span>
+
+                            F{{ member.family.id|stringformat:"03d" }}
+
+                            ·
+
+                            {{ member.family.area }}
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

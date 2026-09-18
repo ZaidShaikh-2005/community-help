@@ -1,0 +1,300 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Add Family - ASHA Care</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-layout">
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="small-logo">
+                A
+            </div>
+
+            <div>
+
+                <h2>
+                    ASHA Care
+                </h2>
+
+                <span>
+                    Healthcare Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="nav-item"
+            >
+                <span>▣</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="{% url 'add_family' %}"
+                class="nav-item active"
+            >
+                <span>+</span>
+                Add Family
+            </a>
+
+
+            <a
+                href="{% url 'family_list' %}"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Family List
+            </a>
+
+
+            <a
+                href="{% url 'add_member' %}"
+                class="nav-item"
+            >
+                <span>+</span>
+                Add Member
+            </a>
+
+
+            <a
+                href="{% url 'member_list' %}"
+                class="nav-item"
+            >
+                <span>♙</span>
+                Member List
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="{% url 'logout' %}"
+                class="nav-item logout"
+            >
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Add Family
+                </h1>
+
+                <p>
+                    Register a new family in the system.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="form-section">
+
+
+            <div class="form-card">
+
+
+                <div class="form-card-header">
+
+                    <div>
+
+                        <h2>
+                            Family Details
+                        </h2>
+
+                        <p>
+                            Enter the basic information
+                            of the family.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Family Name
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="family_name"
+                                placeholder="Enter family name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Contact Number
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="contact_number"
+                                placeholder="Enter contact number"
+                                maxlength="15"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Address
+                            <span>*</span>
+                        </label>
+
+                        <textarea
+                            name="address"
+                            rows="4"
+                            placeholder="Enter complete address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Area / Locality
+                            </label>
+
+                            <input
+                                type="text"
+                                name="area"
+                                placeholder="Enter area"
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                PIN Code
+                            </label>
+
+                            <input
+                                type="text"
+                                name="pin_code"
+                                placeholder="Enter PIN code"
+                                maxlength="10"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+                        <a
+                            href="{% url 'dashboard' %}"
+                            class="secondary-btn"
+                        >
+                            Cancel
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Save Family
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

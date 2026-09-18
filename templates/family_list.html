@@ -1,0 +1,325 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Family List - ASHA Care</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-layout">
+
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="small-logo">
+                A
+            </div>
+
+            <div>
+
+                <h2>
+                    ASHA Care
+                </h2>
+
+                <span>
+                    Healthcare Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="nav-item"
+            >
+                <span>▣</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="{% url 'add_family' %}"
+                class="nav-item"
+            >
+                <span>+</span>
+                Add Family
+            </a>
+
+
+            <a
+                href="{% url 'family_list' %}"
+                class="nav-item active"
+            >
+                <span>⌂</span>
+                Family List
+            </a>
+
+
+            <a
+                href="{% url 'add_member' %}"
+                class="nav-item"
+            >
+                <span>+</span>
+                Add Member
+            </a>
+
+
+            <a
+                href="{% url 'member_list' %}"
+                class="nav-item"
+            >
+                <span>♙</span>
+                Member List
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="{% url 'logout' %}"
+                class="nav-item logout"
+            >
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Family List
+                </h1>
+
+                <p>
+                    View and manage registered families.
+                </p>
+
+            </div>
+
+
+            <a
+                href="{% url 'add_family' %}"
+                class="primary-btn"
+            >
+                + Add Family
+            </a>
+
+        </header>
+
+
+
+        <section class="list-section">
+
+
+            <!-- SEARCH -->
+
+            <div class="search-card">
+
+                <form
+                    method="GET"
+                    action="{% url 'family_list' %}"
+                    class="search-form"
+                >
+
+                    <div class="search-input">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            name="search"
+                            value="{{ search }}"
+                            placeholder="Search family by name..."
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                    >
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-card">
+
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h2>
+                            Registered Families
+                        </h2>
+
+                        <p>
+                            All families registered by you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Family ID
+                                </th>
+
+                                <th>
+                                    Family Name
+                                </th>
+
+                                <th>
+                                    Contact
+                                </th>
+
+                                <th>
+                                    Address
+                                </th>
+
+                                <th>
+                                    Members
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                        {% for family in families %}
+
+                            <tr>
+
+                                <td>
+                                    F{{ family.id|stringformat:"03d" }}
+                                </td>
+
+
+                                <td>
+                                    <strong>
+                                        {{ family.family_name }}
+                                    </strong>
+                                </td>
+
+
+                                <td>
+                                    {{ family.contact_number }}
+                                </td>
+
+
+                                <td>
+                                    {{ family.area }}
+                                </td>
+
+
+                                <td>
+                                    {{ family.members.count }}
+                                </td>
+
+
+                                <td>
+
+                                    <a
+                                        href="{% url 'family_detail' family.id %}"
+                                        class="view-btn"
+                                    >
+                                        View
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+
+                        {% empty %}
+
+                            <tr>
+
+                                <td colspan="6">
+
+                                    No families found.
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
