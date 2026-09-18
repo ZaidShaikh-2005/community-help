@@ -65,17 +65,13 @@ The repository focuses on building useful software, documenting development work
 <div align="center">
 
 ### Contributing technical guidance through the GitHub Community
-
 <br>
 
 <a href="https://github.com/orgs/community/discussions/208038#discussioncomment-18501894">
 
 <img src="https://img.shields.io/badge/🤝%20VIEW%20MY%20ANSWER-181717?style=for-the-badge&logo=github&logoColor=white">
-
 </a>
-
-&nbsp;
-
+&nbsp;&nbsp;
 <a href="https://github.com/orgs/community/discussions/208038">
 
 <img src="https://img.shields.io/badge/💬%20VIEW%20FULL%20DISCUSSION-7F00FF?style=for-the-badge&logo=github&logoColor=white">
