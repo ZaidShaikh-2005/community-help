@@ -159,18 +159,13 @@
 
                 </div>
 
-
-
                 <form method="POST">
 
                     {% csrf_token %}
 
-
                     <div class="form-row">
 
-
                         <div class="form-group">
-
                             <label>
                                 Family Name
                                 <span>*</span>
@@ -182,16 +177,63 @@
                                 placeholder="Enter family name"
                                 required
                             >
-
                         </div>
 
+                        <div class="form-group">
+                            <label>
+                                Village
+                                <span>*</span>
+                            </label>
 
+                            <input
+                                type="text"
+                                name="village"
+                                placeholder="Enter village"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
 
                         <div class="form-group">
+                            <label>
+                                House Number
+                                <span>*</span>
+                            </label>
 
+                            <input
+                                type="text"
+                                name="house_number"
+                                placeholder="Enter house number"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Family Number
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="family_number"
+                                placeholder="Enter family number"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
                             <label>
                                 Contact Number
-                                <span>*</span>
                             </label>
 
                             <input
@@ -199,55 +241,10 @@
                                 name="contact_number"
                                 placeholder="Enter contact number"
                                 maxlength="15"
-                                required
                             >
-
                         </div>
 
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Address
-                            <span>*</span>
-                        </label>
-
-                        <textarea
-                            name="address"
-                            rows="4"
-                            placeholder="Enter complete address"
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-
-                    <div class="form-row">
-
-
                         <div class="form-group">
-
-                            <label>
-                                Area / Locality
-                            </label>
-
-                            <input
-                                type="text"
-                                name="area"
-                                placeholder="Enter area"
-                            >
-
-                        </div>
-
-
-
-                        <div class="form-group">
-
                             <label>
                                 PIN Code
                             </label>
@@ -258,12 +255,39 @@
                                 placeholder="Enter PIN code"
                                 maxlength="10"
                             >
-
                         </div>
-
 
                     </div>
 
+
+                    <div class="form-group">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <textarea
+                            name="address"
+                            rows="4"
+                            placeholder="Enter complete address"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Area / Locality
+                        </label>
+
+                        <input
+                            type="text"
+                            name="area"
+                            placeholder="Enter area"
+                        >
+
+                    </div>
 
 
                     <div class="form-actions">
@@ -275,7 +299,6 @@
                             Cancel
                         </a>
 
-
                         <button
                             type="submit"
                             class="primary-btn"
@@ -284,7 +307,6 @@
                         </button>
 
                     </div>
-
 
                 </form>
 

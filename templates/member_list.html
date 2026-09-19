@@ -12,9 +12,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Member List - ASHA Care
-    </title>
+    <title>Member List - ASHA Care</title>
 
     <link
         rel="stylesheet"
@@ -54,46 +52,27 @@
 
         <nav class="sidebar-nav">
 
-            <a
-                href="{% url 'dashboard' %}"
-                class="nav-item"
-            >
+            <a href="{% url 'dashboard' %}" class="nav-item">
                 <span>▣</span>
                 Dashboard
             </a>
 
-
-            <a
-                href="{% url 'add_family' %}"
-                class="nav-item"
-            >
+            <a href="{% url 'add_family' %}" class="nav-item">
                 <span>+</span>
                 Add Family
             </a>
 
-
-            <a
-                href="{% url 'family_list' %}"
-                class="nav-item"
-            >
+            <a href="{% url 'family_list' %}" class="nav-item">
                 <span>⌂</span>
                 Family List
             </a>
 
-
-            <a
-                href="{% url 'add_member' %}"
-                class="nav-item"
-            >
+            <a href="{% url 'add_member' %}" class="nav-item">
                 <span>+</span>
                 Add Member
             </a>
 
-
-            <a
-                href="{% url 'member_list' %}"
-                class="nav-item active"
-            >
+            <a href="{% url 'member_list' %}" class="nav-item active">
                 <span>♙</span>
                 Member List
             </a>
@@ -103,10 +82,7 @@
 
         <div class="sidebar-bottom">
 
-            <a
-                href="{% url 'logout' %}"
-                class="nav-item logout"
-            >
+            <a href="{% url 'logout' %}" class="nav-item logout">
                 <span>↪</span>
                 Logout
             </a>
@@ -149,8 +125,6 @@
         <section class="list-section">
 
 
-            <!-- SEARCH -->
-
             <div class="search-card">
 
                 <form
@@ -188,10 +162,7 @@
 
 
 
-            <!-- TABLE -->
-
             <div class="table-card">
-
 
                 <div class="table-header">
 
@@ -215,7 +186,6 @@
 
                     <table>
 
-
                         <thead>
 
                             <tr>
@@ -229,7 +199,7 @@
                                 </th>
 
                                 <th>
-                                    Age
+                                    DOB
                                 </th>
 
                                 <th>
@@ -245,6 +215,10 @@
                                 </th>
 
                                 <th>
+                                    Status
+                                </th>
+
+                                <th>
                                     Action
                                 </th>
 
@@ -253,9 +227,7 @@
                         </thead>
 
 
-
                         <tbody>
-
 
                         {% for member in members %}
 
@@ -276,7 +248,13 @@
 
 
                                 <td>
-                                    {{ member.age }}
+
+                                    {% if member.date_of_birth %}
+                                        {{ member.date_of_birth|date:"d-m-Y" }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+
                                 </td>
 
 
@@ -292,6 +270,11 @@
 
                                 <td>
                                     {{ member.family.family_name }}
+                                </td>
+
+
+                                <td>
+                                    {{ member.alive_status }}
                                 </td>
 
 
@@ -313,10 +296,8 @@
 
                             <tr>
 
-                                <td colspan="7">
-
+                                <td colspan="8">
                                     No members found.
-
                                 </td>
 
                             </tr>
