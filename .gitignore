@@ -5,3 +5,7 @@ db.sqlite3
 .env
 .vscode/
 staticfiles/
+
+build/
+dist/
+installer/
